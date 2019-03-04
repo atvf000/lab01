@@ -11,48 +11,75 @@
 ## Tutorial
 
 ```bash
-$ export GITHUB_USERNAME=<имя_пользователя>
-$ export GIST_TOKEN=<сохраненный_токен>
+# Присваивание переменной GITHUB_USERNAME имя пользователя на Github
+$ export GITHUB_USERNAME=<atvf000>
+#Вводим для переменной GIST_TOKEN созданный token для работы с Gist
+$ export GIST_TOKEN=<>
+
 $ alias edit=<nano|vi|vim|subl>
 ```
 
 ```ShellSession
+# Создаем директорию с нашим именем и папкой workspace
 $ mkdir -p ${GITHUB_USERNAME}/workspace
+# Переходим в созданный каталог
 $ cd ${GITHUB_USERNAME}/workspace
+# Выводим путь до текущей директории
 $ pwd
+/home/Илья/atvf000/workspace
+# Возвращаемся в предыдущую папку
 $ cd ..
+# Выводим путь до текущей директории
 $ pwd
+/home/Илья/atvf000
 ```
 
 ```ShellSession
+# Создаем каталоги в каталоге workspace
 $ mkdir -p workspace/tasks/
 $ mkdir -p workspace/projects/
 $ mkdir -p workspace/reports/
+# Переходим в каталог workspace
 $ cd workspace
 ```
 
 ```ShellSession
 # Debian
+# Скачиваем архив с последней версией nodejs
 $ wget https://nodejs.org/dist/v6.11.5/node-v6.11.5-linux-x64.tar.xz
+# Распаковываем в текущую директорию (создается каталог с именем файла)
 $ tar -xf node-v6.11.5-linux-x64.tar.xz
+# Удаляем архив
 $ rm -rf node-v6.11.5-linux-x64.tar.xz
+# Перемещаем каталог с nodejs в каталог node
 $ mv node-v6.11.5-linux-x64 node
 ```
 
 ```ShellSession
 $ ls node/bin
+node	npm
+# Выводим список директорий, где терминал ищет исполняемые файлы
 $ echo ${PATH}
+/home/Илья/bin:/usr/local/bin:/home/Илья/.local/bin:/usr/local/bin:/usr/bin:/cygdrive/c/WINDOWS/system32:/cygdrive/c/WINDOWS:/cygdrive/c/WINDOWS/System32/Wbem:/cygdrive/c/WINDOWS/System32/WindowsPowerShell/v1.0:/cygdrive/c/WINDOWS/System32/OpenSSH:/cygdrive/c/Program Files/dotnet:/cygdrive/c/Users/Илья/AppData/Local/Microsoft/WindowsApps:/cygdrive/c/Users/Илья/.babun
+# Добавляем к переменной PATH путь до бинарных файлов nodejs
 $ export PATH=${PATH}:`pwd`/node/bin
+#  Выводим список директорий  и видим, что наша директория успешно добавлена
 $ echo ${PATH}
+/home/Илья/bin:/usr/local/bin:/home/Илья/.local/bin:/usr/local/bin:/usr/bin:/cygdrive/c/WINDOWS/system32:/cygdrive/c/WINDOWS:/cygdrive/c/WINDOWS/System32/Wbem:/cygdrive/c/WINDOWS/System32/WindowsPowerShell/v1.0:/cygdrive/c/WINDOWS/System32/OpenSSH:/cygdrive/c/Program Files/dotnet:/cygdrive/c/Users/Илья/AppData/Local/Microsoft/WindowsApps:/cygdrive/c/Users/Илья/.babun:/home/Илья/atvf000/workspace/node/bin
+# Создаем директорию scripts
 $ mkdir scripts
+# Создаем в этой директории файл activate
 $ cat > scripts/activate<<EOF
 export PATH=\${PATH}:`pwd`/node/bin
 EOF
+# При помощи команды source содержимое файла будет исполнено как набор команд
 $ source scripts/activate
 ```
 
 ```ShellSession
+# Устанавливаем gistup при помощи npm
 $ npm install -g gistup
+
 $ ls node/bin
 ```
 
